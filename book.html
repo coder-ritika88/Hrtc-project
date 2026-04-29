@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Ticket - HRTC</title>
+<link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body class="book">
+
+<nav class="navbar">
+    <div class="logo">HRTC</div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="book.html">Book Ticket</a></li>
+        <li><a href="help.html">Help Desk</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="routes.html">Routes</a></li>
+        <li><a href="signup.html">Sign-Up</a></li>
+    </ul>
+</nav>
+
+<section class="booking-form">
+
+<h2>Book Your Ticket</h2>
+
+<form id="bookingForm">
+
+<label>Select Route:</label>
+<select id="route">
+
+<option value="Shimla-Chandigarh">Shimla → Chandigarh (₹300)</option>
+<option value="Manali-Chandigarh">Manali → Chandigarh (₹450)</option>
+<option value="Kullu-Chandigarh">Kullu → Chandigarh (₹400)</option>
+<option value="Mandi-Chandigarh">Mandi → Chandigarh (₹350)</option>
+<option value="Hamirpur-Chandigarh">Hamirpur → Chandigarh (₹320)</option>
+<option value="Bilaspur-Chandigarh">Bilaspur → Chandigarh (₹300)</option>
+<option value="Kangra-Chandigarh">Kangra → Chandigarh (₹380)</option>
+<option value="Chamba-Chandigarh">Chamba → Chandigarh (₹420)</option>
+<option value="Shimla-Delhi">Shimla → Delhi (₹500)</option>
+<option value="Manali-Delhi">Manali → Delhi (₹550)</option>
+<option value="Kullu-Delhi">Kullu → Delhi (₹520)</option>
+<option value="Mandi-Delhi">Mandi → Delhi (₹480)</option>
+<option value="Hamirpur-Delhi">Hamirpur → Delhi (₹460)</option>
+<option value="Solan-Chandigarh">Solan → Chandigarh (₹300)</option>
+<option value="Shimla-Manali">Shimla → Manali (₹350)</option>
+
+</select>
+
+<label>Date:</label>
+<input type="date" id="date" required>
+
+<label>Departure Time:</label>
+<input type="time" id="time" required>
+
+<label>Passengers:</label>
+<input type="number" id="passengers" min="1" value="1" required>
+
+<label>Your Name:</label>
+<input type="text" id="name" required>
+
+<button type="submit">Book Ticket</button>
+
+</form>
+
+</section>
+
+<script>
+document.getElementById("bookingForm").addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const route = document.getElementById("route").value;
+const date = document.getElementById("date").value;
+const time = document.getElementById("time").value;
+const passengers = document.getElementById("passengers").value;
+const name = document.getElementById("name").value;
+
+const response = await fetch("http://localhost:5000/api/book", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+name: name,
+busName: route,
+from: route.split("-")[0],
+to: route.split("-")[1],
+date: date + " " + time
+})
+});
+
+const data = await response.json();
+
+alert(data.message);
+
+if(data.success){
+document.getElementById("bookingForm").reset();
+}
+
+});
+</script>
+
+</body>
+</html>

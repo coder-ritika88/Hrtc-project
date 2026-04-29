@@ -1,0 +1,653 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 50px;
+    background: #1e3c72;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: yellow;
+}
+
+/* HERO */
+.hero {
+    height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957');
+    background-size: cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 40px;
+}
+
+.hero p {
+    margin: 10px 0;
+}
+
+/* SEARCH BOX */
+.search-box {
+    margin-top: 20px;
+}
+
+.search-box input, .search-box button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-box button {
+    background: #ff9800;
+    color: white;
+    cursor: pointer;
+}
+
+/* FEATURES */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #1e3c72;
+    color: white;
+}
+.bus-card {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+.bus-card:hover {
+    transform: scale(1.02);
+}
+
+.bus-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating {
+    background: green;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.bus-middle {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+.seats {
+    color: red;
+    font-weight: bold;
+}
+
+.book-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* ================================
+   GLOBAL STYLING
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f2f2f2;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* ================================
+   NAVBAR STYLING
+================================ */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar ul li a {
+    color: #fff;
+    padding: 5px 10px;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+    background-color: #0055a5;
+    border-radius: 5px;
+}
+
+/* ================================
+   ROUTES.HTML
+================================ */
+body.routes {
+    background-color: #e6f2ff;
+    padding: 30px 20px;
+}
+
+body.routes h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #003366;
+}
+
+body.routes table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+body.routes th, body.routes td {
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+body.routes th {
+    background-color: #003366;
+    color: #fff;
+}
+
+body.routes tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+body.routes tr:hover {
+    background-color: #d9ebff;
+}
+
+/* ================================
+   BOOK.HTML
+================================ */
+body.book {
+    background-color: #fff0f5;
+    padding: 30px 20px;
+}
+
+body.book h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #800080;
+}
+
+body.book form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+body.book form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+body.book form input,
+body.book form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+body.book form button {
+    background-color: #800080;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+body.book form button:hover {
+    background-color: #a64ca6;
+}
+
+/* ================================
+   CONTACT.HTML
+================================ */
+body.contact {
+    background-color: #f0fff0;
+    padding: 30px 20px;
+}
+
+body.contact h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2e8b57;
+}
+
+body.contact form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+body.contact form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+body.contact form input,
+body.contact form select,
+body.contact form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+body.contact form button {
+    background-color: #2e8b57;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+body.contact form button:hover {
+    background-color: #3cb371;
+}
+
+/* ================================
+   SIGNUP.HTML
+================================ */
+body.signup {
+    background-color: #fffaf0;
+    padding: 30px 20px;
+}
+
+body.signup h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff8c00;
+}
+
+body.signup form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+body.signup form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+body.signup form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+body.signup form button {
+    background-color: #ff8c00;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+body.signup form button:hover {
+    background-color: #ffa500;
+}
+
+/* ================================
+   HELP.HTML
+================================ */
+body.help {
+    background-color: #f9f9f9;
+    padding: 30px 20px;
+}
+
+body.help h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+body.help .help-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+body.help .help-card {
+    background-color: #fff;
+    padding: 20px;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: 0.3s;
+}
+
+body.help .help-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.15);
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media screen and (max-width: 768px){
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    body.help .help-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* ============================= */
+/* GLOBAL RESET */
+/* ============================= */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    padding-top: 80px; /* space for fixed navbar */
+}
+
+/* ============================= */
+/* NAVBAR (FIXED TOP) */
+/* ============================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    padding: 15px 40px;
+    z-index: 1000;
+}
+
+/* LOGO */
+.navbar h2 {
+    color: #fff;
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* MENU */
+.navbar ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* MENU ITEMS */
+.navbar ul li {
+    margin-left: 25px;
+}
+
+/* LINKS */
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.navbar ul li a:hover {
+    color: #ffcc00;
+}
+
+/* ============================= */
+/* HERO SECTION FIX */
+/* ============================= */
+.hero {
+    margin-top: 0;
+    padding-top: 50px;
+}
+
+/* ============================= */
+/* FORM INPUTS (SEARCH BOX FIX) */
+/* ============================= */
+input, select {
+    padding: 10px;
+    margin: 8px 0;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* BUTTON */
+button {
+    padding: 10px 15px;
+    background: #ffcc00;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #e6b800;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar ul li {
+        margin: 10px 0;
+    }
+
+    input, select {
+        width: 100%;
+    }
+}
+/* ============================= */
+/* CARDS SECTION FIX */
+/* ============================= */
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+/* INDIVIDUAL CARD */
+.card {
+    background: rgba(255, 255, 255, 0.9); /* slight transparency */
+    padding: 20px;
+    border-radius: 10px;
+    width: 220px;
+    text-align: center;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* CARD TITLE */
+.card h3 {
+    margin-bottom: 10px;
+    color: #1e3c72; /* dark blue */
+}
+
+/* CARD TEXT */
+.card p {
+    color: #333;
+    font-size: 14px;
+}
+/* BUS RESULT SECTION FIX */
+#busResults {
+    margin-top: 20px;
+}
+
+/* BUS CARD DESIGN */
+.bus-card {
+    background: #ffffff;
+    color: #000000; /* 👈 THIS FIXES YOUR PROBLEM */
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* TEXT INSIDE CARD */
+.bus-card p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+/* BUTTON STYLING */
+.bus-card button {
+    background: #ffcc00;
+    color: #000;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.bus-card button:hover {
+    background: #e6b800;
+}

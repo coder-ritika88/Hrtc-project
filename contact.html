@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - HRTC</title>
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <script>
+        async function submitForm(event) {
+            event.preventDefault();
+
+            const formData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                reason: document.getElementById("reason").value,
+                message: document.getElementById("message").value
+            };
+
+            try {
+                const response = await fetch("http://localhost:5000/contact", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert("✅ Thank you! Your message has been sent successfully.");
+                    document.getElementById("contactForm").reset();
+                } else {
+                    alert("❌ Error: " + (result.message || "Something went wrong"));
+                }
+
+            } catch (error) {
+                console.error("Error:", error);
+                alert("⚠️ Server not responding. Please try again later.");
+            }
+        }
+    </script>
+</head>
+
+<body class="contact">
+
+    <nav class="navbar">
+        <div class="logo">HRTC</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="book.html">Book Ticket</a></li>
+            <li><a href="help.html">Help Desk</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="routes.html">Routes</a></li>
+            <li><a href="signup.html">Sign-Up</a></li>
+        </ul>
+    </nav>
+
+    <section class="contact-form">
+        <h2>Contact Us</h2>
+
+        <form id="contactForm" onsubmit="submitForm(event)">
+
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your Phone" required>
+
+            <label for="reason">Reason for Contact:</label>
+            <select id="reason" name="reason" required>
+                <option value="">--Select Reason--</option>
+                <option value="booking_issue">Booking Issue</option>
+                <option value="payment_issue">Payment Issue</option>
+                <option value="refund_request">Refund Request</option>
+                <option value="complaint_bus">Complaint About Bus</option>
+                <option value="lost_found">Lost & Found</option>
+                <option value="route_inquiry">Route Inquiry</option>
+                <option value="delay_complaint">Delay Complaint</option>
+                <option value="health_safety">Health & Safety Concern</option>
+                <option value="feedback">Feedback</option>
+                <option value="cancellation_request">Cancellation Request</option>
+                <option value="customer_support">Customer Support</option>
+                <option value="lost_ticket">Lost Ticket</option>
+                <option value="ticket_modification">Ticket Modification</option>
+                <option value="lost_luggage">Lost Luggage</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Write your message here" rows="5"></textarea>
+
+            <button type="submit">Send Message</button>
+
+        </form>
+    </section>
+
+    <script src="JAVASCRIPT/script.js"></script>
+
+</body>
+</html>

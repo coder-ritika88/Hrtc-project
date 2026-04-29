@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Desk - HRTC</title>
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <script>
+        async function submitHelp(event) {
+            event.preventDefault();
+
+            const helpData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                issueType: document.getElementById("issueType").value,
+                message: document.getElementById("message").value
+            };
+
+            try {
+                const response = await fetch("http://localhost:5000/help", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(helpData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert("✅ Your help request has been submitted successfully!");
+                    document.getElementById("helpForm").reset();
+                } else {
+                    alert("❌ Error: " + (result.message || "Something went wrong"));
+                }
+
+            } catch (error) {
+                console.error(error);
+                alert("⚠️ Server not responding. Please try again later.");
+            }
+        }
+    </script>
+</head>
+
+<body class="help">
+
+    <nav class="navbar">
+        <div class="logo">HRTC</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="book.html">Book Ticket</a></li>
+            <li><a href="help.html">Help Desk</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="routes.html">Routes</a></li>
+            <li><a href="signup.html">Sign-Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- INFO CARDS -->
+    <section class="help-container">
+
+        <div class="help-card">
+            <h3>Customer Support</h3>
+            <p>Call us 24/7 for assistance with bookings and routes.</p>
+        </div>
+
+        <div class="help-card">
+            <h3>FAQs</h3>
+            <p>Find answers to common questions about our services and tickets.</p>
+        </div>
+
+        <div class="help-card">
+            <h3>Online Support</h3>
+            <p>Contact our support team via email or live chat for help.</p>
+        </div>
+
+    </section>
+
+    <!-- HELP FORM -->
+    <section class="help-form">
+        <h2>Raise a Help Request</h2>
+
+        <form id="helpForm" onsubmit="submitHelp(event)">
+
+            <label>Full Name:</label>
+            <input type="text" id="name" placeholder="Your Name" required>
+
+            <label>Email:</label>
+            <input type="email" id="email" placeholder="Your Email" required>
+
+            <label>Issue Type:</label>
+            <select id="issueType" required>
+                <option value="">--Select Issue--</option>
+                <option value="booking">Booking Issue</option>
+                <option value="payment">Payment Issue</option>
+                <option value="refund">Refund Issue</option>
+                <option value="route">Route Issue</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label>Message:</label>
+            <textarea id="message" rows="5" placeholder="Describe your issue..." required></textarea>
+
+            <button type="submit">Submit Request</button>
+
+        </form>
+    </section>
+
+    <script src="JAVASCRIPT/script.js"></script>
+
+</body>
+</html>

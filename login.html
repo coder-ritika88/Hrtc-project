@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - HRTC</title>
+<link rel="stylesheet" href="CSS/style.css">
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f2f2f2;
+}
+
+.form-container{
+    width:350px;
+    background:white;
+    padding:30px;
+    margin:80px auto;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+.form-container h2{
+    text-align:center;
+    color:#003366;
+}
+
+input, select{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#003366;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0055aa;
+}
+</style>
+</head>
+
+<body>
+
+<div class="form-container">
+
+<h2>Login</h2>
+
+<form id="loginForm">
+
+<label>Email:</label>
+<input type="email" id="loginEmail" required>
+
+<label>Password:</label>
+<input type="password" id="loginPassword" required>
+
+<label>Login As:</label>
+<select id="loginType">
+<option value="user">User</option>
+<option value="admin">Admin</option>
+</select>
+
+<button type="submit">Login</button>
+
+</form>
+
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const email = document.getElementById("loginEmail").value;
+const password = document.getElementById("loginPassword").value;
+const loginType = document.getElementById("loginType").value;
+
+// ---------------- ADMIN LOGIN ----------------
+if(loginType === "admin"){
+
+    if(email === "admin@hrtc.com" && password === "admin123"){
+
+        alert("Admin Login Successful 🚀");
+        window.location.href = "admin.html";
+
+    } else {
+        alert("Invalid Admin Credentials");
+    }
+
+    return;
+}
+
+// ---------------- USER LOGIN ----------------
+try {
+
+    const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email,
+            password
+        })
+    });
+
+    const data = await response.json();
+
+    if (response.ok && data.success) {
+
+        alert("Welcome " + data.user);
+
+        localStorage.setItem("user", data.user);
+
+        window.location.href = "index.html";
+
+    } else {
+        alert(data.message || "Login failed");
+    }
+
+} catch (error) {
+    console.log(error);
+    alert("Server not responding");
+}
+
+});
+</script>
+
+</body>
+</html>
